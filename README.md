@@ -9,9 +9,8 @@ The Na'vi language has been expanding ever since the film's release with it even
 ## Sentences in use
 In the Na'vi language in order to determine of how many we are speaking in a sentence, the number must go at the beginning of the sentence, an example is as follows:
 
-<th>
-<td> - Nantang hahaw. A viperwolf is sleeping. </td>
-<td>- Menantang hahaw. Two viperwolves are sleeping. </td>
-<td>- Pxenantang hahaw. Three viperwolves are sleeping.</td>
-<td>- Aynantang hahaw. Viperwolves (four or more) are sleeping.</td>
-</th>
+- Nantang hahaw. A viperwolf is sleeping.
+- Menantang hahaw. Two viperwolves are sleeping.
+- Pxenantang hahaw. Three viperwolves are sleeping.
+- Aynantang hahaw. Viperwolves (four or more) are sleeping.
+
