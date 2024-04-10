@@ -14,3 +14,4 @@ In the Na'vi language in order to determine of how many we are speaking in a sen
 - Pxenantang hahaw. Three viperwolves are sleeping.
 - Aynantang hahaw. Viperwolves (four or more) are sleeping.
 
+This rules for sentences will be implemented in the recognizer in order to formulate sentences in singular or plural.
