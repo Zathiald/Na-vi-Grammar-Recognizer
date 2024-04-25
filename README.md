@@ -6,3 +6,12 @@ The Na'vi language is a language created by USC Professor Paul Frommer. This is 
 
 The Na'vi language has been expanding ever since the film's release with it even having a hand sing version. This language is spoken by the Na'vi people who live on the moon of Pandora, the Na'vi language was designed to emulate the general aural feel and flavor of Polynesian languages, such as Maori, one of the three official languages of New Zealand.
 
+## Sentences in use
+In the Na'vi language in order to determine of how many we are speaking in a sentence, the number must go at the beginning of the sentence, an example is as follows:
+
+- Nantang hahaw. A viperwolf is sleeping.
+- Menantang hahaw. Two viperwolves are sleeping.
+- Pxenantang hahaw. Three viperwolves are sleeping.
+- Aynantang hahaw. Viperwolves (four or more) are sleeping.
+
+This rules for sentences will be implemented in the recognizer in order to formulate sentences in singular or plural.
