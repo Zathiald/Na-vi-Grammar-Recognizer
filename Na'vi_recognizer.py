@@ -38,4 +38,3 @@ for sentence in sentences:
     tokens = na_vi_tokenize(sentence)
     for tree in na_vi_parser.parse(tokens):
         tree.pretty_print()
-
