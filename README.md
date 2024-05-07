@@ -201,7 +201,27 @@ for sentence in sentences:
         tree.pretty_print()
 ```
 
-Because this code is going through a lot of word in a table, the complexity is O(n^3) which is a really high complexity that could certainly be improved.
+Because this code is going through a lot of word in a table, the complexity would need to be analyzed as follows
+
+1. **Tokenization:**
+
+    a. **Iterating Through Words:** Tokenization involves going through each word in the sentence. With \( n \) words in the sentence, this step's time complexity is \( O(n) \).
+
+    b. **Replacements:** For each word, replacements are made based on a dictionary. If there are \( m \) replacements, the time complexity for this step is \( O(m) \) per word.
+
+    c. **Overall Tokenization Complexity:** Combining the complexities of iterating through words and replacements, tokenization's overall time complexity per sentence is \( O(n \cdot m) \).
+
+2. **Parsing:**
+
+    a. **Tokenized Sentence Length:** Parsing time depends on the length of the tokenized sentence, \( l \).
+
+    b. **Grammar Complexity:** Parsing time also depends on the grammar's complexity, \( g \).
+
+    c. **NLTK Parsing Algorithm:** NLTK's parsing algorithm typically runs in cubic time (\( O(l^3 \cdot g) \)). This includes building parsing tables and performing table-driven parsing.
+
+    d. **Overall Parsing Complexity:** Therefore, parsing's overall time complexity per sentence is \( O(l^3 \cdot g) \).
+
+So the overall complexity would be O(n⋅m)+O(l^3⋅g).
 
 ## Testing
 
@@ -358,7 +378,7 @@ N -> "nantang" {% id %} | "tute" {% id %} | "ikran" {% id %} | "tsam" {% id %} |
 V -> "hahaw" {% id %} | "yom" {% id %} | "taron" {% id %} | "tìng" {% id %} | "ean" {% id %} | "tìftia" {% id %} | "tìrol" {% id %}
 ```
 
-With this javascript the complexity for the code can be reduced to O(n^2), thanks to the tokenization and parsing, which can speed up the process for the iterations.
+With this javascript the complexity of the code would't change, it would remain the same as in python, this because both require tokenization and parsing, the analysis would be similar to the one in the python code, so the complexity still is O(n⋅m)+O(l^3⋅g).
 
 
 ## References
