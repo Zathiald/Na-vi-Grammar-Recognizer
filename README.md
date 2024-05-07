@@ -217,11 +217,11 @@ Because this code is going through a lot of word in a table, the complexity woul
 
     b. **Grammar Complexity:** Parsing time also depends on the grammar's complexity, \( g \).
 
-    c. **NLTK Parsing Algorithm:** NLTK's parsing algorithm typically runs in cubic time (\( O(l^3 \cdot g) \)). This includes building parsing tables and performing table-driven parsing.
+    c. **NLTK Parsing Algorithm:** NLTK's parsing algorithm typically runs in cubic time O(l^3⋅g). This includes building parsing tables and performing table-driven parsing.
 
     d. **Overall Parsing Complexity:** Therefore, parsing's overall time complexity per sentence is O(l^3⋅g).
 
-So the overall complexity would be O(n⋅m)+O(l^3⋅g).
+So the overall complexity would be O(n⋅m)+O(l^3⋅g), taking into account the tokenization and the parsing.
 
 ## Testing
 
