@@ -77,7 +77,7 @@ Now let's explain section by section
 
 1. S -> NP VP: This rule states that a sentence S consists of a noun phrase NP followed by a verb phrase VP.
 
-2. NP -> N | Num N | N N: This rule defines a noun phrase NP. A noun phrase can be a single noun N, a number Num followed by a noun N, or two nouns N N.
+2. NP -> N | Num N | N N: This rule defines a noun phrase NP. A noun phrase can be a single noun N, a number Num followed by a noun N, or two nouns N N. One thing to note in this rule is that the portion of NP -> N N contains ambiguity this because of the fact that we already have N by itself so if there were to be more than two N the tree could be generated in many ways just of a single sentence, it can interpret it however it wants as long as it follows the rules.
 
 3. VP -> V: This rule defines a verb phrase VP. In this grammar, a verb phrase consists of a single verb V.
 
