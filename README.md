@@ -380,6 +380,8 @@ V -> "hahaw" {% id %} | "yom" {% id %} | "taron" {% id %} | "tìng" {% id %} | "
 
 With this javascript the complexity of the code would't change, it would remain the same as in python, this because both require tokenization and parsing, the analysis would be similar to the one in the python code, so the complexity still is O(n⋅m)+O(l^3⋅g).
 
+So if both codes have the same complexity, then why use Python?, well the answer is simplicity, Javascript is a very strict and rather times confusing programming language, while on the other hand Python is able to understand the necessary libraries and variables without the need for them to be explicitly defined or installed. Using python is the best option for this problem because it gives a complete and simple solution for this problem.
+
 
 ## References
 
