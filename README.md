@@ -77,7 +77,7 @@ Now let's explain section by section
 
 1. S -> NP VP: This rule states that a sentence S consists of a noun phrase NP followed by a verb phrase VP.
 
-2. NP -> N | Num N | N N: This rule defines a noun phrase NP. A noun phrase can be a single noun N, a number Num followed by a noun N, or two nouns N N.
+2. NP -> N | Num N | N N: This rule defines a noun phrase NP. A noun phrase can be a single noun N, a number Num followed by a noun N, or two nouns N N. One thing to note in this rule is that the portion of NP -> N N contains ambiguity this because of the fact that we already have N by itself so if there were to be more than two N the tree could be generated in many ways just of a single sentence, it can interpret it however it wants as long as it follows the rules.
 
 3. VP -> V: This rule defines a verb phrase VP. In this grammar, a verb phrase consists of a single verb V.
 
@@ -201,7 +201,27 @@ for sentence in sentences:
         tree.pretty_print()
 ```
 
-Because this code is going through a lot of word in a table, the complexity is O(n^3) which is a really high complexity that could certainly be improved.
+Because this code is going through a lot of word in a table, the complexity would need to be analyzed as follows
+
+1. **Tokenization:**
+
+    a. **Iterating Through Words:** Tokenization involves going through each word in the sentence. With \( n \) words in the sentence, this step's time complexity is \( O(n) \).
+
+    b. **Replacements:** For each word, replacements are made based on a dictionary. If there are \( m \) replacements, the time complexity for this step is \( O(m) \) per word.
+
+    c. **Overall Tokenization Complexity:** Combining the complexities of iterating through words and replacements, tokenization's overall time complexity per sentence is \( O(n \cdot m) \).
+
+2. **Parsing:**
+
+    a. **Tokenized Sentence Length:** Parsing time depends on the length of the tokenized sentence, \( l \).
+
+    b. **Grammar Complexity:** Parsing time also depends on the grammar's complexity, \( g \).
+
+    c. **NLTK Parsing Algorithm:** NLTK's parsing algorithm typically runs in cubic time O(l^3⋅g). This includes building parsing tables and performing table-driven parsing.
+
+    d. **Overall Parsing Complexity:** Therefore, parsing's overall time complexity per sentence is O(l^3⋅g).
+
+So the overall complexity would be O(n⋅m)+O(l^3⋅g), taking into account the tokenization and the parsing.
 
 ## Testing
 
@@ -210,6 +230,130 @@ As previously stated we used the 10 different sentences and after running the pr
 ![Grammar2](https://github.com/Zathiald/Na-vi-Grammar-Recognizer/assets/111139805/16a0d828-7dc3-4563-a260-8c95afeb440e)
 
 ![Grammar 2_2](https://github.com/Zathiald/Na-vi-Grammar-Recognizer/assets/111139805/ebcb83a3-0f48-415e-a8e8-9583916c3883)
+
+In order to test all this cases, there is a document labeled as Test_cases.py in which each sentence separately shows it's expected result
+
+```python
+sentence = ["Nantang hahaw"]
+
+# Expected result
+#          S       
+#     _____|____    
+#    NP         VP 
+#    |          |   
+#    N          V  
+#    |          |   
+# nantang     hahaw
+
+sentence = ["Menantang hahaw"]
+
+# Expected result
+
+#            S
+#       _____|______    
+#      NP           VP 
+#   ___|_____       |   
+# Num        N      V  
+#  |         |      |   
+#  me     nantang hahaw
+
+sentence = ["Pxenantang hahaw"]
+
+# Expected result
+
+#            S
+#       _____|______    
+#      NP           VP
+#   ___|_____       |
+# Num        N      V
+#  |         |      |
+# pxe     nantang hahaw
+
+sentence = ["Aynantang hahaw"]
+
+# Expected result
+
+#           S
+#       _____|______
+#      NP           VP
+#   ___|_____       |
+# Num        N      V
+#  |         |      |
+#  ay     nantang hahaw
+
+
+sentence = ["Tute yom"]
+
+# Expected result
+
+#       S
+#   ____|___
+#  NP       VP
+#  |        |
+#  N        V
+#  |        |
+# tute     yom
+
+sentence = ["Ikran taron"]
+
+# Expected result
+
+#        S
+#    ____|____
+#   NP        VP
+#   |         |
+#   N         V
+#   |         |
+# ikran     taron
+
+sentence = ["Tsam kxetse tìng"]
+
+# Expected result
+
+#            S
+#        ____|_____
+#       NP         VP
+#   ____|____      |
+#  N         N     V
+#  |         |     |
+# tsam     kxetse tìng
+
+sentence = ["Atokirina' ean"]
+
+# Expected result
+
+#             S
+#      _______|___
+#     NP          VP
+#     |           |
+#     N           V
+#     |           |
+# atokirina_     ean
+
+sentence = ["Eywa vitrautral tìftia"]
+
+# Expected result
+
+#              S
+#        ______|________
+#       NP              VP
+#   ____|______         |
+#  N           N        V
+#  |           |        |
+# eywa     vitrautral tìftia
+
+sentence = ["Na'vi tìrol"]
+
+# Expected result
+
+#        S
+#    ____|____
+#   NP        VP
+#   |         |
+#   N         V
+#   |         |
+# na_vi     tìrol
+```
 
 ## Other implementations
 
@@ -234,7 +378,9 @@ N -> "nantang" {% id %} | "tute" {% id %} | "ikran" {% id %} | "tsam" {% id %} |
 V -> "hahaw" {% id %} | "yom" {% id %} | "taron" {% id %} | "tìng" {% id %} | "ean" {% id %} | "tìftia" {% id %} | "tìrol" {% id %}
 ```
 
-With this javascript the complexity for the code can be reduced to O(n^2), thanks to the tokenization and parsing, which can speed up the process for the iterations.
+With this javascript the complexity of the code would't change, it would remain the same as in python, this because both require tokenization and parsing, the analysis would be similar to the one in the python code, so the complexity still is O(n⋅m)+O(l^3⋅g).
+
+So if both codes have the same complexity, then why use Python?, well the answer is simplicity, Javascript is a very strict and rather times confusing programming language, while on the other hand Python is able to understand the necessary libraries and variables without the need for them to be explicitly defined or installed. Using python is the best option for this problem because it gives a complete and simple solution for this problem.
 
 
 ## References
